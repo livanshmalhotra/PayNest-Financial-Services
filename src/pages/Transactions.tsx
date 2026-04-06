@@ -173,9 +173,9 @@ export default function Transactions() {
                       </Button>
                     </div>
 
-                    <div><Label>Description</Label><Input value={newTx.description} onChange={(e) => setNewTx({ ...newTx, description: e.target.value })} /></div>
-                    <div><Label>Amount</Label><Input type="number" value={newTx.amount} onChange={(e) => setNewTx({ ...newTx, amount: e.target.value })} /></div>
-                    <div><Label>Date</Label><Input type="date" value={newTx.date} onChange={(e) => setNewTx({ ...newTx, date: e.target.value })} /></div>
+                    <div><Label htmlFor="new-desc">Description</Label><Input id="new-desc" value={newTx.description} onChange={(e) => setNewTx({ ...newTx, description: e.target.value })} /></div>
+                    <div><Label htmlFor="new-amount">Amount</Label><Input id="new-amount" type="number" value={newTx.amount} onChange={(e) => setNewTx({ ...newTx, amount: e.target.value })} /></div>
+                    <div><Label htmlFor="new-date">Date</Label><Input id="new-date" type="date" value={newTx.date} onChange={(e) => setNewTx({ ...newTx, date: e.target.value })} /></div>
                     
                     <div>
                       <Label>Category</Label>
@@ -215,9 +215,9 @@ export default function Transactions() {
                       </Button>
                     </div>
 
-                    <div><Label>Description</Label><Input value={editForm.description} onChange={(e) => setEditForm(prev => prev && { ...prev, description: e.target.value })} /></div>
-                    <div><Label>Amount</Label><Input type="number" value={editForm.amount} onChange={(e) => setEditForm(prev => prev && { ...prev, amount: e.target.value })} /></div>
-                    <div><Label>Date</Label><Input type="date" value={editForm.date} onChange={(e) => setEditForm(prev => prev && { ...prev, date: e.target.value })} /></div>
+                    <div><Label htmlFor="edit-desc">Description</Label><Input id="edit-desc" value={editForm.description} onChange={(e) => setEditForm(prev => prev && { ...prev, description: e.target.value })} /></div>
+                    <div><Label htmlFor="edit-amount">Amount</Label><Input id="edit-amount" type="number" value={editForm.amount} onChange={(e) => setEditForm(prev => prev && { ...prev, amount: e.target.value })} /></div>
+                    <div><Label htmlFor="edit-date">Date</Label><Input id="edit-date" type="date" value={editForm.date} onChange={(e) => setEditForm(prev => prev && { ...prev, date: e.target.value })} /></div>
                     
                     <div>
                       <Label>Category</Label>
