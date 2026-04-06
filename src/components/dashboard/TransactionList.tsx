@@ -93,7 +93,17 @@ const TransactionList = () => {
                     <SelectContent>{categories.map((c) => <SelectItem key={c} value={c}>{c}</SelectItem>)}</SelectContent>
                   </Select>
                 </div>
-                <Button onClick={handleAdd} className="w-full rounded-xl">Add Transaction</Button>
+                <Button
+                  onClick={handleAdd}
+                  className="w-full rounded-xl font-semibold text-white shadow-lg
+                    bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500
+                    hover:from-indigo-400 hover:via-purple-400 hover:to-pink-400
+                    active:from-indigo-700 active:via-purple-700 active:to-pink-700
+                    active:scale-[0.97] active:shadow-inner
+                    transition-all duration-150 border-0"
+                >
+                  Add Transaction
+                </Button>
               </div>
             </DialogContent>
           </Dialog>
