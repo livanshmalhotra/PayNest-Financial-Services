@@ -56,7 +56,7 @@ export default function Sidebar() {
         {/* Header */}
         <div className="sidebar-header">
           <div className="sidebar-brand">
-            <span className="sidebar-brand-name">ZORVYN</span>
+            <span className="sidebar-brand-name">PayNest</span>
             <span className="sidebar-brand-sub">FINANCIAL SERVICES</span>
           </div>
           <button

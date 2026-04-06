@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { updateProfile as updateAuthProfile } from 'firebase/auth';
-import { doc, setDoc } from 'firebase/firestore';
+import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
+import { setTransactionInFirestore } from '@/lib/transactionService';
 import { useAuth, type UserData } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -59,7 +60,27 @@ export default function Profile() {
       // 2. Update Firestore user document
       await setDoc(doc(db, "users", currentUser.uid), updatedData, { merge: true });
 
-      // 3. Refresh context data
+      // 3. Write the initial payment ONCE if income > balance and it hasn't been created yet
+      if (
+        parsedIncome !== undefined &&
+        parsedBalance !== undefined &&
+        parsedIncome > parsedBalance
+      ) {
+        const txRef = doc(db, 'users', currentUser.uid, 'transactions', 'initial-payment');
+        const txSnap = await getDoc(txRef);
+        if (!txSnap.exists()) {
+          await setTransactionInFirestore(currentUser.uid, {
+            id: 'initial-payment',
+            date: new Date().toISOString().split('T')[0],
+            amount: parsedIncome - parsedBalance,
+            category: 'Other',
+            type: 'expense',
+            description: 'Initial Payment',
+          });
+        }
+      }
+
+      // 4. Refresh context data
       await refreshUserData();
       
       toast.success('Profile updated successfully');

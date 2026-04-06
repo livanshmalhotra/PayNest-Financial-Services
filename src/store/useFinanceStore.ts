@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { useAuth } from '@/contexts/AuthContext';
+
 import {
   fetchTransactions,
   setTransactionInFirestore,
@@ -158,29 +158,8 @@ export const useFinanceStore = create<FinanceState>((set) => ({
 // ─── Selectors ────────────────────────────────────────────────────────────────
 
 export const useAllTransactions = () => {
-  const { userData } = useAuth();
   const { transactions } = useFinanceStore();
-
-  const all = [...transactions];
-
-  // If balance < income, the gap is a pre-existing expense from onboarding
-  if (
-    userData &&
-    userData.balance !== undefined &&
-    userData.income !== undefined &&
-    userData.balance < userData.income
-  ) {
-    all.push({
-      id: 'initial-payment',
-      date: new Date().toISOString().split('T')[0],
-      amount: userData.income - userData.balance,
-      category: 'Other',
-      type: 'expense',
-      description: 'Initial Payment',
-    });
-  }
-
-  return all;
+  return transactions;
 };
 
 export const useFilteredTransactions = () => {

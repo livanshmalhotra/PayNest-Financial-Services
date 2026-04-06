@@ -5,6 +5,7 @@ import TransactionList from '@/components/dashboard/TransactionList';
 import InsightsSection from '@/components/dashboard/InsightsSection';
 import OnboardingModal from '@/components/dashboard/OnboardingModal';
 
+
 const Index = () => {
   return (
     <div className="flex-1 w-full relative">
