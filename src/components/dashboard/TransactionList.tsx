@@ -6,7 +6,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Label } from '@/components/ui/label';
 
 const categories: Category[] = ['Food', 'Transport', 'Entertainment', 'Shopping', 'Bills', 'Salary', 'Freelance', 'Investment', 'Other'];
@@ -62,7 +62,10 @@ const TransactionList = () => {
               </Button>
             </DialogTrigger>
             <DialogContent className="glass-card">
-              <DialogHeader><DialogTitle>New Transaction</DialogTitle></DialogHeader>
+              <DialogHeader>
+                <DialogTitle>New Transaction</DialogTitle>
+                <DialogDescription className="sr-only">Fill in the details to add a new transaction.</DialogDescription>
+              </DialogHeader>
               <div className="space-y-4 pt-2">
                 {/* Transaction Type toggles */}
                 <div className="flex gap-2">
@@ -112,7 +115,10 @@ const TransactionList = () => {
         {/* Update Transaction Dialog */}
         <Dialog open={!!editForm} onOpenChange={(open) => !open && setEditForm(null)}>
           <DialogContent className="glass-card">
-            <DialogHeader><DialogTitle>Update Transaction</DialogTitle></DialogHeader>
+            <DialogHeader>
+              <DialogTitle>Update Transaction</DialogTitle>
+              <DialogDescription className="sr-only">Edit the details of this transaction.</DialogDescription>
+            </DialogHeader>
             {editForm && (
               <div className="space-y-4 pt-2">
                 {/* Transaction Type toggles */}

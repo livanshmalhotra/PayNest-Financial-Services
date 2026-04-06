@@ -84,6 +84,12 @@ export default function Login() {
                 Sign up
               </Link>
             </div>
+            {/* Demo credentials hint */}
+            <div style={{ opacity: 0.5 }} className="w-full rounded-lg border border-border/40 bg-muted/30 px-4 py-3 text-xs text-center space-y-0.5">
+              <p className="font-semibold text-foreground/80 mb-1">🔑 Demo Credentials</p>
+              <p className="text-muted-foreground">Email: <span className="font-mono">demouser@gmail.com</span></p>
+              <p className="text-muted-foreground">Password: <span className="font-mono">123456</span></p>
+            </div>
           </CardFooter>
         </form>
       </Card>
