@@ -92,7 +92,9 @@ export const useFinanceStore = create<FinanceState>((set) => ({
 
   addTransaction: async (t, uid) => {
     // Generate a stable id locally so UI is instantly reactive
-    const id = crypto.randomUUID();
+    const id = typeof crypto !== 'undefined' && crypto.randomUUID 
+      ? crypto.randomUUID() 
+      : Date.now().toString(36) + Math.random().toString(36).substring(2, 9);
     const tx: Transaction = { ...t, id };
 
     // Optimistic update — show immediately
